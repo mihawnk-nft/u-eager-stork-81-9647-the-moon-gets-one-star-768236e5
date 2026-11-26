@@ -19,7 +19,7 @@ run writes the exact same bytes).
 ## Run it
 
 ```sh
-python3 main.py            # writes /output/entry.txt
+python3 main.py            # writes /output/entry.txt (or $MAKEFUN_OUTPUT_DIR/entry.txt)
 python3 main.py out.txt    # write to a custom path (local testing)
 ```
 

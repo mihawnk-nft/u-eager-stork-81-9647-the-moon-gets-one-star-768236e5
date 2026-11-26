@@ -35,8 +35,13 @@ LINE = (
 
 def main() -> int:
     # The harness mounts /output; an optional argv[1] lets the line be
-    # verified locally without that mount.
-    out_path = sys.argv[1] if len(sys.argv) > 1 else "/output/entry.txt"
+    # verified locally without that mount, and MAKEFUN_OUTPUT_DIR
+    # overrides the output directory the same way.
+    if len(sys.argv) > 1:
+        out_path = sys.argv[1]
+    else:
+        out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
+        out_path = os.path.join(out_dir, "entry.txt")
 
     text = LINE.strip()
     if not (1 <= len(text) <= 120):
